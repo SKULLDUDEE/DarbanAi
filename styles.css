@@ -4,83 +4,98 @@ body {
     padding: 0;
     background-color: #F5F5F5;
     color: #333;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
-    padding: 20px;
-    background-color: #FFFFFF;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    max-width: 400px;
     width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 2s ease-in-out;
 }
 
 .logo {
-    max-width: 150px;
+    width: 200px;
     margin-bottom: 20px;
+    animation: slideInDown 1s ease-in-out;
 }
 
 .headline {
     font-weight: 800;
-    font-size: 1.8rem;
+    font-size: 3rem;
     margin-bottom: 20px;
     color: #111;
+    animation: slideInLeft 1.2s ease-in-out;
 }
 
 .subheadline {
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
     color: #555;
+    animation: slideInRight 1.4s ease-in-out;
 }
 
 .description {
     font-weight: 400;
-    font-size: 1rem;
-    margin-bottom: 20px;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
     color: #777;
+    animation: slideInUp 1.6s ease-in-out;
 }
 
 .signup-form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: fadeInUp 1.8s ease-in-out;
 }
 
 .signup-form input {
-    padding: 10px;
-    margin: 5px 0;
+    padding: 15px;
+    margin: 10px 0;
     width: 100%;
+    max-width: 400px;
     border: 1px solid #DDD;
-    border-radius: 4px;
-    font-size: 1rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.signup-form input:focus {
+    box-shadow: 0 0 8px rgba(0, 204, 204, 0.6);
+    outline: none;
 }
 
 .signup-form button {
-    padding: 10px 20px;
+    padding: 15px 30px;
     background-color: #00CCCC;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     color: #FFF;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .signup-form button:hover {
     background-color: #009999;
+    transform: scale(1.05);
 }
 
 .contact {
     font-weight: 400;
-    font-size: 1rem;
-    margin-top: 30px;
+    font-size: 1.2rem;
+    margin-top: 40px;
 }
 
 .contact a {
@@ -94,11 +109,42 @@ body {
 }
 
 footer {
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 .copyright {
     font-weight: 400;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: #999;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
