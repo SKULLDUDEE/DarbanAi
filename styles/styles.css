@@ -1,0 +1,63 @@
+body {
+    font-family: 'Urbanist', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5F5F5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #111;
+}
+
+.headline {
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 20px 0;
+    color: #222;
+}
+
+.subheadline {
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: #555;
+}
+
+.contact {
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 40px 0;
+}
+
+.contact a {
+    color: #111;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+.copyright {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: #999;
+}
