@@ -5,12 +5,22 @@ function handleFormSubmit(formObject) {
     formData.forEach((value, key) => {object[key] = value});
     var json = JSON.stringify(object);
 
-    fetch('https://script.google.com/macros/s/AKfycbxPPrcSGnjwbBfzopcMMfRWRr1A6f5T51w7Lb_mB1NZ0C5QoteLZ7fjr9awox-h23AS/exec', {
-        method: 'POST',
+    // First, send a preflight request
+    fetch('https://script.google.com/macros/s/AKfycbz1ghrSKSReYWV4rn3HZziryX8r6QnFKtSxWn1Am3tMw2Bhx5GET8AKNZpW2olc6vRs/exec' + '?header=TRUE', {
+        method: 'OPTIONS',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: json
+    })
+    .then(() => {
+        // If preflight is successful, send the actual request
+        return fetch('https://script.google.com/macros/s/AKfycbz1ghrSKSReYWV4rn3HZziryX8r6QnFKtSxWn1Am3tMw2Bhx5GET8AKNZpW2olc6vRs/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: json
+        });
     })
     .then(response => response.json())
     .then(data => {
