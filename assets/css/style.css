@@ -5207,20 +5207,28 @@ footer.home6-footer .footer-btm .terms-condition p a:hover { color: var(--primar
     .home5-blog-section .blog-card2 .blog-content .explore-btn:hover svg { fill: var(--primary-color4) }
 .home6-banner-area { background: linear-gradient(#000000, #16D4D8); padding: 200px 0 430px; position: relative; z-index: 1 }
 
+.home6-banner-area {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 60px;
+}
+
 @media(min-width:1400px) and (max-width:1599px) {
-    .home6-banner-area { padding: 200px 0 380px }
+    .home6-banner-area { padding: 200px 0; }
 }
 
 @media(max-width:1399px) {
-    .home6-banner-area { padding: 200px 0 380px }
+    .home6-banner-area { padding: 200px 0; }
 }
 
 @media(max-width:1199px) {
-    .home6-banner-area { padding: 160px 0 340px }
+    .home6-banner-area { padding: 160px 0; }
 }
 
 @media(max-width:767px) {
-    .home6-banner-area { padding: 150px 0 180px }
+    .home6-banner-area { padding: 150px 0; }
 }
 
 .home6-banner-area .animate-vector { position: absolute; left: 0; top: 39%; z-index: -1 }
