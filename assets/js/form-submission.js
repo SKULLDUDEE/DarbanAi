@@ -1,56 +1,50 @@
-// Function to handle form submission
-function handleFormSubmit(formObject, event) {
-    // Prevent the default form submission
+function handleFormSubmit(event) {
     event.preventDefault();
 
-    // Create a FormData object from the form
-    var formData = new FormData(formObject);
-
-    // Convert FormData to a plain object
+    var form = event.target;
+    var formData = new FormData(form);
     var object = {};
-    formData.forEach((value, key) => {object[key] = value});
+    formData.forEach((value, key) => {
+        if (key === 'saveInfo') {
+            object[key] = value === 'on';
+        } else {
+            object[key] = value;
+        }
+    });
 
-    // Convert the object to JSON
     var json = JSON.stringify(object);
+    var scriptUrl = 'https://script.google.com/macros/s/AKfycbzPNLBNzkL06l6vz_G82J4yasWPw2wUEMjRaPirabrc-o5Q34OPiEMHYv9LsuDfaLxf/exec';
 
-    // URL of your Google Apps Script web app
-    var scriptUrl = 'https://script.google.com/macros/s/AKfycbx35Scjtgj9wXsy5Ok10N-D8F0ind8E7C7myH-YP7s2GKHBHHnEU97Wf2EvMDt3wScG/exec';
-
-    // Send the POST request to the Google Apps Script
     fetch(scriptUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: json
+        body: json,
+        mode: 'cors'
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Network response was not ok: ' + response.statusText);
         }
         return response.json();
     })
     .then(data => {
         console.log('Success:', data);
-        formObject.reset(); // Reset the form
+        form.reset();
         alert('Form submitted successfully!');
     })
     .catch((error) => {
         console.error('Error:', error);
-        alert('An error occurred. Please try again.');
+        alert('An error occurred. Please try again. Error: ' + error.message);
     });
-
-    // Return false to prevent traditional form submission
-    return false;
 }
 
 // Function to initialize the form
 function initForm() {
     var form = document.getElementById('myForm');
     if (form) {
-        form.addEventListener('submit', function(event) {
-            handleFormSubmit(this, event);
-        });
+        form.addEventListener('submit', handleFormSubmit);
     }
 }
 
