@@ -190,7 +190,7 @@
                     <li class="menu-item-has-children active"><a href="#0" class="drop-down" data-scroll-nav="0">Home</a><i class="bi bi-plus dropdown-icon"></i></li>
                     <li><a href="#0" data-scroll-nav="1">Features</a></li>
                     <li><a href="#0" data-scroll-nav="2">How It Works</a></li>
-                    <li><a href="#0" data-scroll-nav="3">Pricing</a></li>
+                    <!-- <li><a href="#0" data-scroll-nav="3">Pricing</a></li> -->
                     <!--<li><a href="#0" data-scroll-nav="4">About Us</a></li>-->
                     <li><a href="#0" data-scroll-nav="6">Contact</a></li>
                 </ul>
@@ -209,7 +209,7 @@
                         <path d="M15.364 11.636C14.3837 10.6558 13.217 9.93013 11.9439 9.49085C13.3074 8.55179 14.2031 6.9802 14.2031 5.20312C14.2031 2.33413 11.869 0 9 0C6.131 0 3.79688 2.33413 3.79688 5.20312C3.79688 6.9802 4.69262 8.55179 6.05609 9.49085C4.78308 9.93013 3.61631 10.6558 2.63605 11.636C0.936176 13.3359 0 15.596 0 18H1.40625C1.40625 13.8128 4.81279 10.4062 9 10.4062C13.1872 10.4062 16.5938 13.8128 16.5938 18H18C18 15.596 17.0638 13.3359 15.364 11.636ZM9 9C6.90641 9 5.20312 7.29675 5.20312 5.20312C5.20312 3.1095 6.90641 1.40625 9 1.40625C11.0936 1.40625 12.7969 3.1095 12.7969 5.20312C12.7969 7.29675 11.0936 9 9 9Z" />
                     </svg>
                     <span class="d-xl-block d-none">Sign In</span>-->
-                </a>
+                <!-- </a> -->
                 <a href="#0" data-scroll-nav="6" class="primary-btn3 btn-hover d-md-flex d-none">
                     Request a Demo
                     <span></span>
@@ -237,10 +237,10 @@
                             Bridge the gap between offline and online shopping with Darban’s AI-driven customer experience platform.
                         </p>
                         <div class="banner-btn-group">
-                            <a class="primary-btn4 btn-hover" href="#0" data-scroll-nav="6">
+                            <!-- <a class="primary-btn4 btn-hover" href="#0" data-scroll-nav="6">
                                 Get Started Now
                                 <span></span>
-                            </a>
+                            </a> -->
                             <a class="primary-btn4 btn-hover two" href="#0" data-scroll-nav="1" data-fancybox="gallery">
                                 Learn More <span></span>
                             </a>
@@ -253,7 +253,7 @@
     </div>
 
     <!--Dashbord Section-->
-    <div class="dashboard-img-section notActiv mb-130">
+    <!-- <div class="dashboard-img-section notActiv mb-130">
         <div class="container-lg container-fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -266,10 +266,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!--Trusted By Section-->
-    <div class="partner-area four mb-130">
+    <!-- <div class="partner-area four mb-130">
         <div class="container-lg container-fluid">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
@@ -321,7 +321,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!--Key Features Section-->
     <div class="home6-feature-section mb-130" id="feature-section" data-scroll-index="1">
@@ -668,7 +668,7 @@
     </div>
 
     <!--Pricing Section-->
-    <div class="pricing-page pt-130 mb-130" data-scroll-index="3">
+    <!-- <div class="pricing-page pt-130 mb-130" data-scroll-index="3">
         <div class="container-lg container-fluid">
             <div class="section-title-and-tab-btn mb-70">
                 <h1>Simple, Transparent Pricing</h1>
@@ -1016,9 +1016,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--FAQ Section-->
-    <div class="contact-page pt-130 mb-130" data-scroll-index="6">
+    <div class="contact-page mb-130" data-scroll-index="6">
         <div class="container-lg container-fluid">
             <div class="section-title six mb-70">
                 <h2>Get in Touch</h2>
@@ -1082,45 +1082,44 @@
                     </div>
                     <div class="col-xl-8">
                         <div class="contact-form-wrap">
-                            <form>
+                            <form id="myForm" onsubmit="return handleFormSubmit(this)">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-inner mb-30">
-                                            <label>Full Name*</label>
-                                            <input type="text" placeholder="Tacitus Kilgore">
+                                            <label for="fullName">Full Name*</label>
+                                            <input type="text" id="fullName" name="fullName" placeholder="Tacitus Kilgore" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-inner mb-30">
-                                            <label>Your Email*</label>
-                                            <input type="email" placeholder="uncletacitus@gmail.com">
+                                            <label for="email">Your Email*</label>
+                                            <input type="email" id="email" name="email" placeholder="uncletacitus@gmail.com" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-inner mb-30">
-                                            <label>Phone Number <span>(Optional)</span></label>
-                                            <input type="text" placeholder="+91 94444 *****">
+                                            <label for="phone">Phone Number <span>(Optional)</span></label>
+                                            <input type="text" id="phone" name="phone" placeholder="+91 94444 *****">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-inner mb-30">
-                                            <label>Subject</label>
-                                            <input type="text" placeholder="Need a Demo">
+                                            <label for="subject">Subject</label>
+                                            <input type="text" id="subject" name="subject" placeholder="Need a Demo" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-inner mb-30">
-                                            <label>How can We Help You?</label>
-<textarea placeholder="What’s on your mind"></textarea>
+                                            <label for="message">How can We Help You?</label>
+                                            <textarea id="message" name="message" placeholder="What's on your mind" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-50">
                                         <div class="form-inner2">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value id="contactCheck">
-                                                <label class="form-check-label" for="contactCheck">
-                                                    Please save my name, email address for the next time I
-                                                    message.
+                                                <input class="form-check-input" type="checkbox" id="saveInfo" name="saveInfo">
+                                                <label class="form-check-label" for="saveInfo">
+                                                    Please save my name, email address for the next time I message.
                                                 </label>
                                             </div>
                                         </div>
@@ -1287,14 +1286,14 @@
                                                     </svg>
                                                 </a>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <a href="#0" data-scroll-nav="3">
                                                     Pricing
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
                                                         <path d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z" />
                                                     </svg>
                                                 </a>
-                                            </li>
+                                            </li> -->
                                             <!--<li>
                                                 <a href="pricing.html">
                                                     About Us
@@ -1378,6 +1377,7 @@
     <script src="assets/js/DrawSVGPlugin3.min.js"></script>
 
     <script src="assets/js/jquery.marquee.min.js"></script>
+    <script src="assets/js/form-submission.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 
