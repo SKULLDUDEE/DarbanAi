@@ -13,7 +13,7 @@ function handleFormSubmit(event) {
     });
 
     var json = JSON.stringify(object);
-    var scriptUrl = 'https://script.google.com/macros/s/AKfycbzPNLBNzkL06l6vz_G82J4yasWPw2wUEMjRaPirabrc-o5Q34OPiEMHYv9LsuDfaLxf/exec';
+    var scriptUrl = 'https://script.google.com/macros/s/AKfycbxjGxhEm4VnwjMix_RzdVaRXqwiFycnd5VX0_VeViWAqBm_8tdhhlTMHJKPLqZ3uRB4/exec';
 
     fetch(scriptUrl, {
         method: 'POST',
