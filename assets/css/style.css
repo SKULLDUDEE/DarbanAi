@@ -434,7 +434,7 @@ body:not(.is-mobile) .tt-style-switch:hover { width: 45px; background-color: #16
         .section-title-2 h2 svg { height: 20px; width: 20px }
 }
 
-.section-title3 h2 { color: var(--title-color); font-family: var(--font-Urbanist); font-size: 45px; font-weight: 500; line-height: 1.35; margin-bottom: 0; margin-top: 50px; }
+.section-title3 h2 { color: var(--title-color); font-family: var(--font-Urbanist); font-size: 45px; font-weight: 500; line-height: 1.35; margin-bottom: 0;}
 
 @media(max-width:1399px) {
     .section-title3 h2 { font-size: 40px }
