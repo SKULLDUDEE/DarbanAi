@@ -437,11 +437,11 @@ body:not(.is-mobile) .tt-style-switch:hover { width: 45px; background-color: #16
 .section-title3 h2 { color: var(--title-color); font-family: var(--font-Urbanist); font-size: 45px; font-weight: 500; line-height: 1.35; margin-bottom: 0;}
 
 @media(max-width:1399px) {
-    .section-title3 h2 { font-size: 40px ; margin-top: 60px }
+    .section-title3 h2 { font-size: 40px }
 }
 
 @media(max-width:1199px) {
-    .section-title3 h2 { font-size: 35px ; margin-top: 60px }
+    .section-title3 h2 { font-size: 35px }
 }
 
 @media(max-width:576px) {
