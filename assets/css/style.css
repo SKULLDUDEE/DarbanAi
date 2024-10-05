@@ -5207,14 +5207,6 @@ footer.home6-footer .footer-btm .terms-condition p a:hover { color: var(--primar
     .home5-blog-section .blog-card2 .blog-content .explore-btn:hover svg { fill: var(--primary-color4) }
 .home6-banner-area { background: linear-gradient(#000000, #16D4D8); padding: 200px 0 430px; position: relative; z-index: 1 }
 
-.home6-banner-area {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-bottom: 60px;
-}
-
 @media(min-width:1400px) and (max-width:1599px) {
     .home6-banner-area { padding: 200px 0; }
 }
@@ -5285,6 +5277,14 @@ footer.home6-footer .footer-btm .terms-condition p a:hover { color: var(--primar
         .home6-banner-area .banner-content-wrapper .banner-btn-group .primary-btn4.two:hover { border-color: var(--primary-color4); color: var(--dark-title-color) }
             .home6-banner-area .banner-content-wrapper .banner-btn-group .primary-btn4.two:hover svg { fill: var(--dark-title-color) }
 .home6-banner-area .banner-content-wrapper span { color: var(--paragraph-color-dark); font-family: var(--font-Urbanist); font-size: 14px; font-weight: 300; line-height: 1 }
+
+.home6-banner-area {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 60px;
+}
 
 @keyframes animLoaded {
     0% { transform: rotateX(25deg) }
