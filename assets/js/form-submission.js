@@ -14,7 +14,7 @@ function handleFormSubmit(formObject, event) {
     var json = JSON.stringify(object);
 
     // URL of your Google Apps Script web app
-    var scriptUrl = 'https://script.google.com/macros/s/AKfycbxHGFV9fXzkkFV6ClvlH2Xjqm4qGLDfSIjOPJ43qMzh18kAEH9d70tBL2AYeIT1zJSy/exec';
+    var scriptUrl = 'https://script.google.com/macros/s/AKfycbx35Scjtgj9wXsy5Ok10N-D8F0ind8E7C7myH-YP7s2GKHBHHnEU97Wf2EvMDt3wScG/exec';
 
     // Send the POST request to the Google Apps Script
     fetch(scriptUrl, {
