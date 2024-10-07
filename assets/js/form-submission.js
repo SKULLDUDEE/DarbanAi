@@ -11,12 +11,10 @@ form.addEventListener('submit', e => {
             return response.json();
         })
         .then(data => {
-            console.log('Success:', data);
             alert("Thank you! Your form is submitted successfully.");
             form.reset();
         })
         .catch(error => {
-            console.error('Error:', error);
             alert('An error occurred. Please try again. Error: ' + error.message);
         });
 });
