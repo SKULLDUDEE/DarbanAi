@@ -91,7 +91,7 @@ const Testimonials = () => {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it. Here's what our customers have to say 
+            Don&apos;t just take our word for it. Here&apos;s what our customers have to say 
             about their experience with Darban.AI.
           </p>
         </motion.div>
@@ -123,7 +123,7 @@ const Testimonials = () => {
 
                 {/* Testimonial Text */}
                 <blockquote className="text-lg md:text-xl text-foreground text-center leading-relaxed mb-8 italic">
-                  "{testimonials[currentIndex].content}"
+                  &ldquo;{testimonials[currentIndex].content}&rdquo;
                 </blockquote>
 
                 {/* Author */}

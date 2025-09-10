@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Bot, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 const Navbar = () => {
@@ -45,10 +46,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <Bot className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Darban.AI
-            </span>
+                        <Image src="/darban-logo-light.svg" alt="Darban.AI Logo" width={100} height={40} />
           </motion.div>
 
           {/* Desktop Navigation */}

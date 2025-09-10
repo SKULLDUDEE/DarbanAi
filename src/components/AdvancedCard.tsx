@@ -126,7 +126,7 @@ const FeatureIllustration = ({ icon: Icon, title }: { icon: LucideIcon; title: s
   return getIllustration();
 };
 
-const AdvancedCard = ({ icon: Icon, title, description, color }: AdvancedCardProps) => {
+const AdvancedCard = ({ icon: Icon, title, description }: AdvancedCardProps) => {
   return (
     <motion.div 
       whileHover={{ 

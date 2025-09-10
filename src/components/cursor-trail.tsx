@@ -44,7 +44,7 @@ const CursorTrail = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-40">
-      {trail.map((point, index) => (
+      {trail.map((point) => (
         <motion.div
           key={point.id}
           className="absolute w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full"

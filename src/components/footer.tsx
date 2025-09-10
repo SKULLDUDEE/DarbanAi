@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, Sparkles, Twitter, Linkedin, Github } from "lucide-react";
+import { Twitter, Linkedin, Github } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   const footerLinks = {
@@ -29,7 +30,13 @@ const Footer = () => {
           {/* Brand & Newsletter */}
           <div className="lg:col-span-1 space-y-6">
             <div className="flex items-center space-x-2">
-              <Bot className="h-8 w-8 text-primary" />
+              <Image 
+                src="/darban-logo-light.svg" 
+                alt="Darban AI Logo" 
+                width={32} 
+                height={32} 
+                className="h-8 w-8"
+              />
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Darban.AI
               </span>

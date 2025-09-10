@@ -20,7 +20,7 @@ const About = () => {
     {
       icon: Users,
       title: "Customer Centric",
-      description: "Every decision we make is guided by what's best for our customers and their success.",
+      description: "Every decision we make is guided by what&apos;s best for our customers and their success.",
     },
     {
       icon: Award,
@@ -119,10 +119,10 @@ const About = () => {
               <p>
                 Our team of AI researchers, engineers, and customer experience experts 
                 came together with a shared vision: to create an AI chatbot platform 
-                that's not just powerful, but also intuitive and accessible to everyone.
+                that&apos;s not just powerful, but also intuitive and accessible to everyone.
               </p>
               <p>
-                Today, we're proud to serve thousands of businesses worldwide, 
+                Today, we&apos;re proud to serve thousands of businesses worldwide, 
                 from startups to Fortune 500 companies, helping them transform 
                 their customer interactions through intelligent automation.
               </p>
@@ -140,8 +140,8 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-xl" />
               <div className="relative">
                 <blockquote className="text-lg italic text-foreground mb-4">
-                  "We're not just building chatbots; we're crafting digital experiences 
-                  that make every customer feel heard, understood, and valued."
+                  &ldquo;We&apos;re not just building chatbots; we&apos;re crafting digital experiences 
+                  that make every customer feel heard, understood, and valued.&rdquo;
                 </blockquote>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold mr-4">

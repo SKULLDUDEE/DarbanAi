@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle, Loader } from 'lucide-react';
+import { Mail, Phone, MapPin, Loader } from 'lucide-react';
 
 const contactInfo = [
   {
@@ -27,7 +27,6 @@ const contactInfo = [
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +49,7 @@ const Contact = () => {
             className="space-y-8"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">Get in Touch</h2>
-            <p className="text-lg text-muted-foreground">We'd love to hear from you. Whether you have a question about features, trials, pricing, or anything else, our team is ready to answer all your questions.</p>
+            <p className="text-lg text-muted-foreground">We&apos;d love to hear from you. Whether you have a question about features, trials, pricing, or anything else, our team is ready to answer all your questions.</p>
             <div className="space-y-6">
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex items-center gap-4">
