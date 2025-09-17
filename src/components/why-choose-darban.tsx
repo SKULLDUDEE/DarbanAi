@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 
 const WhyChooseDarban = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -94,11 +94,7 @@ const WhyChooseDarban = () => {
     },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.04, 0.62, 0.23, 0.98]
-      }
+      y: 0
     }
   };
 
@@ -170,6 +166,7 @@ const WhyChooseDarban = () => {
             <motion.div
               key={index}
               variants={itemVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
               className="group relative"
