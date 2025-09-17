@@ -88,16 +88,16 @@ const WhyChooseDarban = () => {
   };
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 20
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       transition: {
         duration: 0.5,
-        ease: "easeOut"
+        ease: [0.04, 0.62, 0.23, 0.98]
       }
     }
   };
@@ -174,6 +174,7 @@ const WhyChooseDarban = () => {
               onMouseLeave={() => setHoveredCard(null)}
               className="group relative"
             >
+              
               <div className={`
                 relative bg-white rounded-2xl p-8 
                 border border-gray-200 
