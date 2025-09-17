@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import HowItWorks from "./HowItWorks";
 import { 
   Brain, 
@@ -22,12 +22,25 @@ import {
 
 const Features = () => {
   const [activeFeature, setActiveFeature] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
+
   // Separate ref and trigger for content after the main description
   const contentRef = useRef(null);
   const isContentInView = useInView(contentRef, { once: true, margin: "-50px" });
+
+  // Check if it's mobile view
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
 
   // Genuine Darban features with professional color palette
   const featuresData = {
@@ -494,10 +507,10 @@ const Features = () => {
                     
                     {feature.features && (
                       <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ 
-                          opacity: activeFeature === index ? 1 : 0,
-                          height: activeFeature === index ? "auto" : 0
+                        initial={{ opacity: isMobile ? 1 : 0, height: isMobile ? "auto" : 0 }}
+                        animate={{
+                          opacity: (isMobile || activeFeature === index) ? 1 : 0,
+                          height: (isMobile || activeFeature === index) ? "auto" : 0
                         }}
                         transition={{ duration: 0.3 }}
                         className="space-y-1.5 mb-4 overflow-hidden"
