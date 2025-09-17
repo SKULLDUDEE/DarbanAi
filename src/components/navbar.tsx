@@ -28,13 +28,13 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center">
+    <div className="fixed top-4 left-4 right-4 z-50 flex justify-center">
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 100, damping: 15 }}
         className={cn(
-          'w-full max-w-7xl rounded-full border-transparent shadow-2xl transition-all duration-300',
+          'w-full max-w-7xl mx-auto rounded-full border-transparent shadow-2xl transition-all duration-300',
           scrolled
             ? 'backdrop-blur-2xl shadow-black/5'
             : 'backdrop-blur-xl shadow-black/10'

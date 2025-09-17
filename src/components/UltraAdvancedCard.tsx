@@ -22,6 +22,7 @@ const UltraAdvancedCard = ({
   variant = 'quantum'
 }: UltraAdvancedCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [ripples, setRipples] = useState<Array<{id: number, x: number, y: number}>>([]);
   const cardRef = useRef<HTMLDivElement>(null);

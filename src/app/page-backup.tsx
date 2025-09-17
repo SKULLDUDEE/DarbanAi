@@ -3,7 +3,7 @@ import Hero from "@/components/hero";
 import Features from "@/components/features";
 import About from "@/components/about";
 import Testimonials from "@/components/testimonials";
-import Pricing from "@/components/pricing";
+// import Pricing from "@/components/pricing";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import FloatingElements from "@/components/floating-elements";
@@ -21,7 +21,7 @@ export default function Home() {
       <Features />
       <About />
       <Testimonials />
-      <Pricing />
+      {/* <Pricing /> */}
       <Contact />
       <Footer />
     </div>

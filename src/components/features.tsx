@@ -24,6 +24,10 @@ const Features = () => {
   const [activeFeature, setActiveFeature] = useState<number | null>(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  // Separate ref and trigger for content after the main description
+  const contentRef = useRef(null);
+  const isContentInView = useInView(contentRef, { once: true, margin: "-50px" });
 
   // Genuine Darban features with professional color palette
   const featuresData = {
@@ -118,7 +122,7 @@ const Features = () => {
       y: 0, 
       scale: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 20,
         stiffness: 100
       }
@@ -140,7 +144,7 @@ const Features = () => {
       rotateX: 0,
       rotateY: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 20,
         stiffness: 100,
         delay: 0.3,
@@ -155,7 +159,7 @@ const Features = () => {
       scale: 1, 
       rotate: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 15,
         stiffness: 200,
         delay: 0.8
@@ -169,7 +173,7 @@ const Features = () => {
       opacity: 1, 
       x: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 20,
         stiffness: 100,
         delay: 1.0,
@@ -185,11 +189,45 @@ const Features = () => {
       scale: 1, 
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 15,
         stiffness: 200,
         delay: 1.4
       }
+    },
+  };
+
+  // Enhanced animation variants for content that pops up after the description
+  const contentPopVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 60, 
+      scale: 0.95,
+      filter: "blur(10px)"
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        type: "spring" as const,
+        damping: 25,
+        stiffness: 120,
+        duration: 0.8,
+        delay: 0.3
+      }
+    },
+  };
+
+  const contentContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      },
     },
   };
 
@@ -230,16 +268,16 @@ const Features = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
           {/* Enhanced Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
             
             <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              initial={{ opacity: 0, y: 40, scale: 1.1 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ delay: 0.2, duration: 0.8, type: "spring", damping: 20, stiffness: 100 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
             >
               <span className="bg-gradient-to-r from-[#111111] to-[#666666] bg-clip-text text-transparent">
@@ -257,18 +295,26 @@ const Features = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="text-lg text-[#666666] max-w-3xl mx-auto leading-relaxed"
             >
-              Darban's AI-powered platform delivers intelligent solutions that transform how you engage 
+              Darban&apos;s AI-powered platform delivers intelligent solutions that transform how you engage 
               with customers, providing personalized experiences that drive sales and satisfaction.
             </motion.p>
           </motion.div>
 
-          {/* Hero Feature Card with GIF-like Animation */}
+          {/* Content trigger point - invisible div to trigger animations */}
+          <div ref={contentRef} className="h-1" />
+
+          {/* Animated Content Container */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8 }}
-            className="mb-12"
+            variants={contentContainerVariants}
+            initial="hidden"
+            animate={isContentInView ? "visible" : "hidden"}
+            className="space-y-12"
           >
+            {/* Hero Feature Card with Enhanced Pop Animation */}
+            <motion.div
+              variants={contentPopVariants}
+              className="mb-12"
+            >
             <div className="relative group">
               <motion.div
                 className="relative bg-[#f9f9f9]/80 backdrop-blur-xl border border-[#dddddd]/30 rounded-2xl p-6 shadow-xl shadow-[#00cccc]/5 overflow-hidden"
@@ -281,7 +327,7 @@ const Features = () => {
                   {/* Left Text Content with Bump Animation */}
                   <motion.div
                     initial={{ opacity: 0, x: -30 }}
-                    animate={isInView ? { 
+                    animate={isContentInView ? { 
                       opacity: 1, 
                       x: 0,
                       scale: [1, 0.95, 1.02, 1] // Shrink then expand when bumped
@@ -305,7 +351,7 @@ const Features = () => {
                           key={index}
                           className="inline-block mr-2"
                           initial={{ opacity: 0, scale: 0.8 }}
-                          animate={isInView ? { 
+                          animate={isContentInView ? { 
                             opacity: 1, 
                             scale: [0.8, 1.1, 1] // Zoom in/out effect
                           } : {}}
@@ -328,7 +374,7 @@ const Features = () => {
                     {/* Animated Description */}
                     <motion.p 
                       initial={{ opacity: 0, y: 20 }}
-                      animate={isInView ? { opacity: 1, y: 0 } : {}}
+                      animate={isContentInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ delay: 1.0, duration: 0.8 }}
                       className="text-base text-[#666666] mb-6 leading-relaxed"
                     >
@@ -337,7 +383,7 @@ const Features = () => {
                           key={index}
                           className="inline-block mr-1"
                           initial={{ opacity: 0 }}
-                          animate={isInView ? { opacity: 1 } : {}}
+                          animate={isContentInView ? { opacity: 1 } : {}}
                           transition={{ delay: 1.2 + index * 0.05 }}
                         >
                           {word}
@@ -348,7 +394,7 @@ const Features = () => {
                     {/* Animated Button */}
                     <motion.button
                       initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                      animate={isInView ? { 
+                      animate={isContentInView ? { 
                         opacity: 1, 
                         scale: 1, 
                         y: 0 
@@ -380,7 +426,7 @@ const Features = () => {
                         x: 50,
                         scale: 0.9
                       }}
-                      animate={isInView ? { 
+                      animate={isContentInView ? { 
                         opacity: 1, 
                         x: 0,
                         scale: 1
@@ -392,68 +438,26 @@ const Features = () => {
                       }}
                       className="relative"
                     >
-                      {/* Static Background */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#00cccc]/5 to-[#4ca1af]/5 rounded-2xl blur-lg" />
-                      
-                      {/* Static Image Container */}
-                      <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200/30">
-                        <img 
-                          src="/chatbot-image.png" 
-                          alt="Darban AI Chatbot" 
-                          className="w-80 h-auto object-contain"
-                        />
-                      </div>
-
-                      {/* Static Badges */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={isInView ? {
-                          opacity: 1,
-                          scale: 1
-                        } : {}}
-                        transition={{
-                          opacity: { delay: 2, duration: 0.5 },
-                          scale: { delay: 2, duration: 0.5 }
-                        }}
-                        className="absolute -top-3 -right-3 bg-white rounded-lg shadow-md border border-gray-200/50 p-2"
-                      >
-                        <div className="flex items-center gap-2">
-                          <Globe className="w-4 h-4 text-[#00cccc]" />
-                          <span className="text-sm font-medium text-gray-800">24/7</span>
-                        </div>
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={isInView ? {
-                          opacity: 1,
-                          scale: 1
-                        } : {}}
-                        transition={{
-                          opacity: { delay: 2.2, duration: 0.5 },
-                          scale: { delay: 2.2, duration: 0.5 }
-                        }}
-                        className="absolute -bottom-3 -left-3 bg-white rounded-lg shadow-md border border-gray-200/50 p-2"
-                      >
-                        <div className="flex items-center gap-2">
-                          <Sparkles className="w-4 h-4 text-emerald-500" />
-                          <span className="text-sm font-medium text-gray-800">Smart AI</span>
-                        </div>
-                      </motion.div>
+                      <video
+                        src="/recoding.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-80 h-auto object-contain rounded-2xl shadow-2xl"
+                      />
                     </motion.div>
                   </div>
                 </div>
               </motion.div>
             </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Primary Features Grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10"
-          >
+            {/* Primary Features Grid */}
+            <motion.div
+              variants={contentPopVariants}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
             {featuresData.primary.map((feature, index) => (
               <motion.div
                 key={index}
@@ -463,7 +467,7 @@ const Features = () => {
                 whileHover={{ y: -5, scale: 1.01 }}
                 className="group relative"
               >
-                <div className="relative bg-[#f9f9f9]/70 backdrop-blur-xl border border-[#dddddd]/30 rounded-xl p-6 h-full shadow-lg shadow-[#00cccc]/5 overflow-hidden transition-all duration-500">
+                <div className="relative bg-white/60 dark:bg-black/60 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-xl p-6 h-full shadow-lg shadow-[#00cccc]/5 overflow-hidden transition-all duration-500">
                   {/* Card Background Effects */}
                   <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500 bg-gradient-to-br ${feature.color}`} />
                   
@@ -520,45 +524,44 @@ const Features = () => {
             ))}
           </motion.div>
 
-          {/* Secondary Features Grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-          >
-            {featuresData.secondary.map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -3, scale: 1.02 }}
-                className="group"
-              >
-                <div className="relative bg-[#f9f9f9]/60 backdrop-blur-lg border border-[#dddddd]/40 rounded-lg p-4 h-full shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-3 transition-opacity duration-300 bg-gradient-to-br ${feature.color}`} />
-                  
-                  <div className="relative z-10 text-center">
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                      className={`inline-flex p-2 rounded-lg bg-gradient-to-r ${feature.color} shadow-sm mb-3`}
-                    >
-                      <feature.icon className="w-4 h-4 text-white" />
-                    </motion.div>
+            {/* Secondary Features Grid */}
+            <motion.div
+              variants={contentPopVariants}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            >
+              {featuresData.secondary.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  className="group"
+                >
+                  <div className="relative bg-white/60 dark:bg-black/60 backdrop-blur-lg border border-white/20 dark:border-black/20 rounded-lg p-4 h-full shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-3 transition-opacity duration-300 bg-gradient-to-br ${feature.color}`} />
                     
-                    <h3 className="text-base font-bold text-[#111111] mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-xs text-[#666666] mb-3 leading-relaxed">
-                      {feature.description}
-                    </p>
-                    <span className="text-xs font-bold text-[#666666] bg-[#e0e0e0] px-2 py-1 rounded-full">
-                      {feature.stats}
-                    </span>
+                    <div className="relative z-10 text-center">
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                        className={`inline-flex p-2 rounded-lg bg-gradient-to-r ${feature.color} shadow-sm mb-3`}
+                      >
+                        <feature.icon className="w-4 h-4 text-white" />
+                      </motion.div>
+                      
+                      <h3 className="text-base font-bold text-[#111111] mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-xs text-[#666666] mb-3 leading-relaxed">
+                        {feature.description}
+                      </p>
+                      <span className="text-xs font-bold text-[#666666] bg-[#e0e0e0] px-2 py-1 rounded-full">
+                        {feature.stats}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -570,4 +573,3 @@ const Features = () => {
 };
 
 export default Features;
-  

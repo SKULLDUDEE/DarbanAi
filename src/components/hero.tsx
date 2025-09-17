@@ -148,7 +148,7 @@ const Hero = () => {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        className="absolute -left-16 top-1/2 -translate-y-1/2 z-20"
+        className="hidden lg:block absolute -left-16 top-1/2 -translate-y-1/2 z-20"
       >
         <div className="flex items-center justify-center bg-[#00cccc]/10 border border-[#00cccc]/30 backdrop-blur-sm rounded px-3 py-2 transform -rotate-90 origin-center">
           <Zap className="w-3 h-3 text-[#00cccc] mr-2" />
@@ -157,7 +157,7 @@ const Hero = () => {
           </span>
         </div>
       </motion.div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
