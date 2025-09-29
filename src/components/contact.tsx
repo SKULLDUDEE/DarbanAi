@@ -60,7 +60,7 @@ const Contact = () => {
       } else {
         setSubmissionStatus('error');
       }
-    } catch (error) {
+    } catch {
       setSubmissionStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -122,7 +122,7 @@ const Contact = () => {
               {submissionStatus === 'success' && (
                 <div className="flex items-center gap-2 text-green-600 bg-green-100 p-3 rounded-lg">
                   <CheckCircle className="w-5 h-5" />
-                  <p>Message sent successfully! We'll get back to you soon.</p>
+                  <p>Message sent successfully! We&apos;ll get back to you soon.</p>
                 </div>
               )}
               {submissionStatus === 'error' && (

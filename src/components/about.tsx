@@ -1,38 +1,51 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Users, Target, Lightbulb, Award, TrendingUp, Globe2 } from "lucide-react";
+import { motion } from 'framer-motion';
+import {
+  Users,
+  Target,
+  Lightbulb,
+  Award,
+  TrendingUp,
+  Globe2,
+} from 'lucide-react';
 
-const About = () => {
-  const stats = [
-    { number: "50K+", label: "Happy Customers", icon: Users },
-    { number: "99.9%", label: "Uptime Guarantee", icon: Target },
-    { number: "24/7", label: "Support Available", icon: Lightbulb },
-    { number: "150+", label: "Countries Served", icon: Globe2 },
-  ];
+const stats = [
+  { number: '50K+', label: 'Happy Customers', icon: Users },
+  { number: '99.9%', label: 'Uptime Guarantee', icon: Target },
+  { number: '24/7', label: 'Support Available', icon: Lightbulb },
+  { number: '150+', label: 'Countries Served', icon: Globe2 },
+];
 
-  const values = [
-    {
-      icon: TrendingUp,
-      title: "Innovation First",
-      description: "We're constantly pushing the boundaries of what's possible with AI technology.",
-    },
-    {
-      icon: Users,
-      title: "Customer Centric",
-      description: "Every decision we make is guided by what&apos;s best for our customers and their success.",
-    },
-    {
-      icon: Award,
-      title: "Quality Excellence",
-      description: "We maintain the highest standards in everything we do, from code to customer service.",
-    },
-  ];
+const values = [
+  {
+    icon: TrendingUp,
+    title: 'Innovation First',
+    description:
+      "We're constantly pushing the boundaries of what's possible with AI technology.",
+  },
+  {
+    icon: Users,
+    title: 'Customer Centric',
+    description:
+      "Every decision we make is guided by what's best for our customers and their success.",
+  },
+  {
+    icon: Award,
+    title: 'Quality Excellence',
+    description:
+      'We maintain the highest standards in everything we do, from code to customer service.',
+  },
+];
 
+export default function About() {
   return (
-    <section id="about" className="py-24 bg-gradient-to-b from-background to-accent/10">
+    <section
+      id="about"
+      className="py-24 bg-gradient-to-b from-background to-accent/10"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,13 +75,13 @@ const About = () => {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            At Darban.AI, we believe that every business deserves intelligent, 
-            personalized customer interactions. Our mission is to democratize AI 
-            technology and make it accessible to businesses of all sizes.
+            At Darban.AI, we believe that every business deserves intelligent,
+            personalized customer interactions. Our mission is to democratize
+            AI technology and make it accessible to businesses of all sizes.
           </p>
         </motion.div>
 
-        {/* Stats Grid */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -76,9 +89,9 @@ const About = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20"
         >
-          {stats.map((stat, index) => (
+          {stats.map(({ number, label, icon: Icon }, index) => (
             <motion.div
-              key={index}
+              key={label}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -87,17 +100,17 @@ const About = () => {
               className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300"
             >
               <div className="inline-flex p-3 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 mb-4">
-                <stat.icon className="w-6 h-6 text-primary" />
+                <Icon className="w-6 h-6 text-primary" />
               </div>
               <div className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
-                {stat.number}
+                {number}
               </div>
-              <div className="text-muted-foreground text-sm">{stat.label}</div>
+              <div className="text-muted-foreground text-sm">{label}</div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Story Section */}
+        {/* Story */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -112,18 +125,18 @@ const About = () => {
             </h3>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                Founded in 2023, Darban.AI emerged from a simple observation: 
-                businesses were struggling to provide personalized, round-the-clock 
+                Founded in 2023, Darban.AI emerged from a simple observation:
+                businesses were struggling to provide personalized, round-the-clock
                 customer support while managing costs and maintaining quality.
               </p>
               <p>
-                Our team of AI researchers, engineers, and customer experience experts 
-                came together with a shared vision: to create an AI chatbot platform 
+                Our team of AI researchers, engineers, and customer experience experts
+                came together with a shared vision: to create an AI chatbot platform
                 that&apos;s not just powerful, but also intuitive and accessible to everyone.
               </p>
               <p>
-                Today, we&apos;re proud to serve thousands of businesses worldwide, 
-                from startups to Fortune 500 companies, helping them transform 
+                Today, we&apos;re proud to serve thousands of businesses worldwide —
+                from startups to Fortune 500 companies — helping them transform
                 their customer interactions through intelligent automation.
               </p>
             </div>
@@ -140,8 +153,8 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl blur-xl" />
               <div className="relative">
                 <blockquote className="text-lg italic text-foreground mb-4">
-                  &ldquo;We&apos;re not just building chatbots; we&apos;re crafting digital experiences 
-                  that make every customer feel heard, understood, and valued.&rdquo;
+                  &ldquo;We&apos;re not just building chatbots; we&apos;re crafting digital
+                  experiences that make every customer feel heard, understood, and valued.&rdquo;
                 </blockquote>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold mr-4">
@@ -157,7 +170,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Values Section */}
+        {/* Values */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -175,10 +188,11 @@ const About = () => {
           </p>
         </motion.div>
 
+        {/* Values Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
+          {values.map(({ icon: Icon, title, description }, index) => (
             <motion.div
-              key={index}
+              key={title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -187,16 +201,14 @@ const About = () => {
               className="text-center p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300"
             >
               <div className="inline-flex p-4 rounded-xl bg-gradient-to-r from-primary/10 to-secondary/10 mb-6">
-                <value.icon className="w-8 h-8 text-primary" />
+                <Icon className="w-8 h-8 text-primary" />
               </div>
-              <h4 className="text-xl font-semibold text-foreground mb-4">{value.title}</h4>
-              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+              <h4 className="text-xl font-semibold text-foreground mb-4">{title}</h4>
+              <p className="text-muted-foreground leading-relaxed">{description}</p>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default About;
+}

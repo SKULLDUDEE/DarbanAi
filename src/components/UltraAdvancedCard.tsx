@@ -22,7 +22,7 @@ const UltraAdvancedCard = ({
   variant = 'quantum'
 }: UltraAdvancedCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
+
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [ripples, setRipples] = useState<Array<{id: number, x: number, y: number}>>([]);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -132,13 +132,10 @@ const UltraAdvancedCard = ({
     
     const newRipple = { id: Date.now(), x, y };
     setRipples(prev => [...prev, newRipple]);
-    setIsClicked(true);
     
     setTimeout(() => {
       setRipples(prev => prev.filter(r => r.id !== newRipple.id));
     }, 1000);
-    
-    setTimeout(() => setIsClicked(false), 200);
   }, []);
 
   const getVariantStyles = () => {

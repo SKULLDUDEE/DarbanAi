@@ -12,12 +12,8 @@ import {
   Palette,
   Globe,
   Clock,
-  Users,
-  User,
   ArrowRight,
-  Sparkles,
-  TrendingUp,
-  Star
+  TrendingUp
 } from "lucide-react";
 
 const Features = () => {
@@ -117,17 +113,6 @@ const Features = () => {
   };
 
   // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      },
-    },
-  };
-
   const itemVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.9 },
     visible: { 
@@ -138,74 +123,6 @@ const Features = () => {
         type: "spring" as const,
         damping: 20,
         stiffness: 100
-      }
-    },
-  };
-
-  const heroVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.8, 
-      y: 100,
-      rotateX: -15,
-      rotateY: 10
-    },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
-      y: 0,
-      rotateX: 0,
-      rotateY: 0,
-      transition: {
-        type: "spring" as const,
-        damping: 20,
-        stiffness: 100,
-        delay: 0.3,
-        duration: 1.2
-      }
-    },
-  };
-
-  const heroIconVariants = {
-    hidden: { scale: 0, rotate: -180 },
-    visible: { 
-      scale: 1, 
-      rotate: 0,
-      transition: {
-        type: "spring" as const,
-        damping: 15,
-        stiffness: 200,
-        delay: 0.8
-      }
-    },
-  };
-
-  const heroTextVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: {
-        type: "spring" as const,
-        damping: 20,
-        stiffness: 100,
-        delay: 1.0,
-        staggerChildren: 0.1
-      }
-    },
-  };
-
-  const heroButtonVariants = {
-    hidden: { opacity: 0, scale: 0.8, y: 20 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
-      y: 0,
-      transition: {
-        type: "spring" as const,
-        damping: 15,
-        stiffness: 200,
-        delay: 1.4
       }
     },
   };

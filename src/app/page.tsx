@@ -1,3 +1,5 @@
+// app/page.tsx
+
 import Navbar from '@/components/navbar';
 import Hero from '@/components/hero';
 import Features from '@/components/features';
@@ -10,17 +12,23 @@ import Footer from '@/components/footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-white text-gray-900 overflow-x-hidden">
+      {/* Global Navigation */}
       <Navbar />
-      <main className="overflow-x-hidden">
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-x-hidden">
         <Hero />
         <Features />
         <WhyChooseDarban />
         <HowItWorks />
+        {/* Future Sections */}
         {/* <Pricing /> */}
         {/* <Testimonials /> */}
         <Contact />
       </main>
+
+      {/* Global Footer */}
       <Footer />
     </div>
   );
