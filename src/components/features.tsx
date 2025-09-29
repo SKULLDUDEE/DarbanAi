@@ -523,14 +523,14 @@ const Features = () => {
                         ))}
                       </motion.div>
                     )}
-                    
+{/*                     
                     <motion.div
                       whileHover={{ x: 3 }}
                       className="flex items-center gap-2 text-[#00cccc] font-semibold cursor-pointer text-sm"
                     >
                       <span>Learn More</span>
                       <ArrowRight className="w-3 h-3" />
-                    </motion.div>
+                    </motion.div> */}
                   </div>
                 </div>
               </motion.div>

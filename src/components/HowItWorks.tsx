@@ -287,24 +287,7 @@ const HowItWorks = () => {
 
       {/* CTA Section */}
       <div className="text-center py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-lg text-gray-600 mb-8">Ready to transform your e-commerce experience?</p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow"
-          >
-            <span className="flex items-center">
-              Get Started Today
-              <Target className="w-5 h-5 ml-3" />
-            </span>
-          </motion.button>
-        </motion.div>
+        
       </div>
     </div>
   );

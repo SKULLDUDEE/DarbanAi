@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Loader } from 'lucide-react';
+import { Mail, Phone, MapPin, Loader, CheckCircle, AlertTriangle } from 'lucide-react';
 
 const contactInfo = [
   {
@@ -26,15 +26,45 @@ const contactInfo = [
 ];
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<'success' | 'error' | null>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(res => setTimeout(res, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    setSubmissionStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmissionStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmissionStatus('error');
+      }
+    } catch (error) {
+      setSubmissionStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -75,11 +105,11 @@ const Contact = () => {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <input type="text" placeholder="Full Name" required className="w-full p-3 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary" />
-                <input type="email" placeholder="Email Address" required className="w-full p-3 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary" />
+                <input type="text" name="name" placeholder="Full Name" required value={formData.name} onChange={handleInputChange} className="w-full p-3 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary" />
+                <input type="email" name="email" placeholder="Email Address" required value={formData.email} onChange={handleInputChange} className="w-full p-3 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary" />
               </div>
-              <input type="text" placeholder="Subject" required className="w-full p-3 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary" />
-              <textarea placeholder="Your Message" required rows={5} className="w-full p-3 rounded-lg border bg-background/50 resize-none focus:ring-2 focus:ring-primary" />
+              <input type="text" name="subject" placeholder="Subject" required value={formData.subject} onChange={handleInputChange} className="w-full p-3 rounded-lg border bg-background/50 focus:ring-2 focus:ring-primary" />
+              <textarea name="message" placeholder="Your Message" required rows={5} value={formData.message} onChange={handleInputChange} className="w-full p-3 rounded-lg border bg-background/50 resize-none focus:ring-2 focus:ring-primary" />
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02, boxShadow: '0 0 20px var(--color-primary)' }}
@@ -89,6 +119,18 @@ const Contact = () => {
               >
                 {isSubmitting ? <Loader className="animate-spin" /> : 'Send Message'}
               </motion.button>
+              {submissionStatus === 'success' && (
+                <div className="flex items-center gap-2 text-green-600 bg-green-100 p-3 rounded-lg">
+                  <CheckCircle className="w-5 h-5" />
+                  <p>Message sent successfully! We'll get back to you soon.</p>
+                </div>
+              )}
+              {submissionStatus === 'error' && (
+                <div className="flex items-center gap-2 text-red-600 bg-red-100 p-3 rounded-lg">
+                  <AlertTriangle className="w-5 h-5" />
+                  <p>Something went wrong. Please try again later.</p>
+                </div>
+              )}
             </form>
           </motion.div>
         </div>

@@ -4,7 +4,7 @@ import Features from '@/components/features';
 import WhyChooseDarban from '@/components/why-choose-darban';
 import HowItWorks from '@/components/how-it-works';
 // import Pricing from '@/components/pricing';
-import Testimonials from '@/components/testimonials';
+// import Testimonials from '@/components/testimonials';
 import Contact from '@/components/contact';
 import Footer from '@/components/footer';
 
@@ -18,7 +18,7 @@ export default function Home() {
         <WhyChooseDarban />
         <HowItWorks />
         {/* <Pricing /> */}
-        <Testimonials />
+        {/* <Testimonials /> */}
         <Contact />
       </main>
       <Footer />
